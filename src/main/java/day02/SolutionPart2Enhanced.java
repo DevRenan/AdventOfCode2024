@@ -1,9 +1,7 @@
-package day2;
+package day02;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SolutionPart2Enhanced {
     public static void main(String[] args) {

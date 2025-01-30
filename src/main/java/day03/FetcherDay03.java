@@ -1,4 +1,4 @@
-package day2;
+package day03;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
@@ -6,14 +6,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
-public class FetcherDay02 {
-    public static List<List<Integer>> extractAndTransform() {
-        String url = "https://adventofcode.com/2024/day/2/input";
+public class FetcherDay03 {
+    public static String extractAndTransform() {
+        String url = "https://adventofcode.com/2024/day/3/input";
         Dotenv dotenv = Dotenv.load();
         String sessionToken = dotenv.get("SESSION_TOKEN");
 
@@ -30,8 +26,7 @@ public class FetcherDay02 {
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-                String responseBody = response.body();
-               return splitLines(responseBody);
+                return response.body();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,11 +34,5 @@ public class FetcherDay02 {
         }
     }
 
-    private static List<List<Integer>> splitLines(String responseBody) {
-        var linesStream = Arrays.stream(responseBody.split("\n"));
-        return linesStream.map(line ->
-                        Arrays.stream(line.split(" "))
-                                .map(Integer::parseInt).collect(Collectors.toList())
-                        ).collect(Collectors.toList());
-    }
+
 }
